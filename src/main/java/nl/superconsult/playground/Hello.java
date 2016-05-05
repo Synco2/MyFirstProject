@@ -2,6 +2,12 @@ package nl.superconsult.playground;
 
 pubic class Hello {
   public static void main(String[] args) {
-    System.out.println("Hello!");
+    Hello h = new Hello();
+    
+    System.out.println(h.sayHello());
+  }
+  
+  public String sayHello() {
+    return "Hello!";
   }
 }
