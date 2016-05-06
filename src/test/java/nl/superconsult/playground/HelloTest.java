@@ -1,13 +1,14 @@
 package nl.superconsult.playground;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-class HelloTest {
-  
+public class HelloTest {
+
   @Test
-  public final void helloTest() {
+  public void helloTest() {
     Hello h = new Hello();
-    
-    assertEquals("Hello", h.sayHello());
+
+    assertEquals("Hello!", h.sayHello());
   }
 }
