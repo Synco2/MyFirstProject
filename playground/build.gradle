@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'pmd'
+apply plugin: 'jdepend'
+
+sourceSets {
+   integrationTest {
+      java.srcDir file('src/integTest/java')
+      resources.srcDir file('src/integTest/resources')
+      compileClasspath = sourceSets.main.output + configurations.testRuntime
+      runtimeClasspath = output + compileClasspath
+   }
+}
+
+pmd {
+   ignoreFailures = true
+}
+
+tasks.withType(Pmd) {
+   reports {
+      xml.enabled = false
+      html.enabled = true
+   }
+}
+
+jdepend {
+   toolVersion = '2.9.1'
+   ignoreFailures = true
+}
+
+task integrationTest(type: Test) {
+   description = 'Runs integration tests.'
+   group = 'verification'
+   testClassesDir = sourceSets.integrationTest.output.classesDir
+   classpath = sourceSets.integrationTest.runtimeClasspath
+   //testResultsDir = file("$testResultsDir/integration")
+}
+
+/*task jacocoIntegrationTestReport(type: JacocoReport) {
+   sourceSets sourceSets.main
+   executionData integTest
+}*/
