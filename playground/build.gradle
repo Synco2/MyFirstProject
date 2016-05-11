@@ -3,6 +3,14 @@ apply plugin: 'jacoco'
 apply plugin: 'pmd'
 apply plugin: 'jdepend'
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
 sourceSets {
    integrationTest {
       java.srcDir file('src/integTest/java')
