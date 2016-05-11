@@ -9,6 +9,6 @@ public class HelloTest {
   public void helloTest() {
     Hello h = new Hello();
 
-    assertEquals("Hello!", h.sayHello());
+    assertEquals("Hello should say Hello", "Hello!", h.sayHello());
   }
 }
